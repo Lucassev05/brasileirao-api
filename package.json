@@ -21,7 +21,8 @@
     "dotenv": "^8.2.0",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
-    "koa-router": "^9.4.0"
+    "koa-router": "^9.4.0",
+    "pg": "^8.4.1"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
