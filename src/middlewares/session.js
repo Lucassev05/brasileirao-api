@@ -12,7 +12,9 @@ const verify = async (ctx, next) => {
 		ctx.state.userId = verification.id;
 		ctx.state.email = verification.email;
 	} catch (error) {
-		return response(ctx, 403, 'Ação proibida');
+		return response(ctx, 403, {
+			mensagem: 'Ação proibida',
+		});
 	}
 
 	return next();
