@@ -5,6 +5,7 @@ const {
 	editJogos,
 } = require('./controllers/jogos');
 const { autenticar } = require('./controllers/auth');
+const { verify } = require('./middlewares/session');
 
 const router = new Router();
 
@@ -14,7 +15,7 @@ const router = new Router();
 
 router
 	.get('/jogos/:rodada', getRodada)
-	.post('/jogos', editJogos)
+	.post('/jogos', verify, editJogos)
 	.get('/classificacao', getClassificacao)
 	.post('/auth', autenticar);
 
