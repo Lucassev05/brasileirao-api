@@ -13,10 +13,13 @@ const editJogos = async (ctx) => {
 		requisicao.golsCasa !== undefined &&
 		requisicao.golsVisitante !== undefined
 	) {
-		const resposta = await editarPlacarDeJogo(requisicao);
-		return response(ctx, 200, resposta);
+		if (requisicao.id >= 1 && requisicao.id <= 380) {
+			const resposta = await editarPlacarDeJogo(requisicao);
+			return response(ctx, 200, resposta);
+		}
+		return response(ctx, 404, { mensagem: 'Id não encontrada' });
 	}
-	return response(ctx, 400, 'Requisição Inválida!');
+	return response(ctx, 400, { mensagem: 'Requisição Inválida' });
 };
 
 const getRodada = async (ctx) => {
@@ -24,11 +27,9 @@ const getRodada = async (ctx) => {
 		const result = await jogosPorRodada(ctx.params.rodada);
 		return response(ctx, 200, result);
 	} catch (error) {
-		return response(
-			ctx,
-			400,
-			'Ocorreu um erro, por favor, tente novamente!'
-		);
+		return response(ctx, 400, {
+			mensagem: 'Ocorreu um erro, por favor, tente novamente',
+		});
 	}
 };
 
@@ -141,11 +142,9 @@ const getClassificacao = async (ctx) => {
 
 		return response(ctx, 200, resposta);
 	} catch (error) {
-		return response(
-			ctx,
-			400,
-			'Ocorreu um erro, por favor, tente novamente!'
-		);
+		return response(ctx, 400, {
+			mensagem: 'Ocorreu um erro, por favor, tente novamente',
+		});
 	}
 };
 
