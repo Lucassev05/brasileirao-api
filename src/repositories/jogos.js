@@ -17,6 +17,7 @@ const editarPlacarDeJogo = async (objeto) => {
 		UPDATE jogos SET gols_casa = ${objeto.golsCasa}, gols_visitante = ${objeto.golsVisitante}
 	FROM
 	  ( SELECT * FROM jogos
+		WHERE jogos.id = ${objeto.id}
 		ORDER BY id
 		FOR UPDATE
 	  ) jogos1
