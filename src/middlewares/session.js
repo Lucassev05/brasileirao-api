@@ -5,8 +5,8 @@ const { response } = require('../utils/response');
 require('dotenv').config();
 
 const verify = async (ctx, next) => {
-	const [bearer, token] = ctx.headers.authorization.split(' ');
 	try {
+		const [bearer, token] = ctx.headers.authorization.split(' ');
 		const verification = await jwt.verify(token, process.env.JWT_SECRET);
 
 		ctx.state.userId = verification.id;
