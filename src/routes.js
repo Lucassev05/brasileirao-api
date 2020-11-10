@@ -15,7 +15,7 @@ const router = new Router();
 
 router
 	.get('/jogos/:rodada', getRodada)
-	.post('/jogos', verify, editJogos)
+	.put('/jogos', verify, editJogos)
 	.get('/classificacao', getClassificacao)
 	.post('/auth', autenticar);
 
